@@ -157,5 +157,10 @@ class DB
 
     // $sql = generateInsertQuery($table, $data, $where);
     
+    public function lastId()
+    {          
+        return (!empty($this->last_id))? $this->last_id : null;
+    }
+    
 }
 ?>
