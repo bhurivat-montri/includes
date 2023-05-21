@@ -104,8 +104,8 @@ class DB
                 return $result->fetch_assoc();
         }
     }
-
-    public function generateInsertString($table, $data, $where = '')
+    
+    public function strint($table, $data, $where = '')
     {
         $columns = implode(', ', array_keys($data));
         $values = "'" . implode("', '", $data) . "'";
@@ -119,7 +119,7 @@ class DB
         return $sql;
     }
 
-    public function generateUpdateQuery($table, $data, $where = '')
+    public function strupt($table, $data, $where = '')
     {
         $set = '';
         foreach ($data as $column => $value) {
@@ -136,7 +136,7 @@ class DB
         return $sql;
     }
 
-    public function generateDeleteQuery($table, $where = '')
+    public function strdet($table, $where = '')
     {  
         $sql = "DELETE FROM $table";
 
@@ -146,7 +146,13 @@ class DB
         
         return $sql;
     }
-
+    
+    public function lastId()
+    {          
+        return (!empty($this->last_id))? $this->last_id : null;
+    }
+    
+    // README.txt
     // $table = 'your_table';
     // $data = [
     //     'column1' => 'value1',
@@ -155,12 +161,7 @@ class DB
     // ];
     // $where = "column3 = 'value3'"; // Example WHERE condition
 
-    // $sql = generateInsertQuery($table, $data, $where);
-    
-    public function lastId()
-    {          
-        return (!empty($this->last_id))? $this->last_id : null;
-    }
+    // $sql = strint($table, $data, $where);
     
 }
 ?>
